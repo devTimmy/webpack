@@ -1037,6 +1037,28 @@ chunk    {4} b.js (b) 49 bytes <{2}> >{3}< [rendered]
      import() ./module-b [2] ./module-a.js 1:0-47"
 `;
 
+exports[`StatsTestCases should print correct stats for graph-correctness-entries 2`] = `
+"Entrypoint e1 = e1.js
+Entrypoint e2 = e2.js
+chunk    {0} e1.js (e1) 49 bytes >{2}< [entry] [rendered]
+ [0] ./e1.js 49 bytes {0} [built]
+     entry ./e1  e1
+chunk    {1} e2.js (e2) 49 bytes >{3}< [entry] [rendered]
+ [1] ./e2.js 49 bytes {1} [built]
+     entry ./e2  e2
+chunk    {2} a.js (a) 49 bytes <{0}> <{3}> >{4}< [rendered]
+ [2] ./module-a.js 49 bytes {2} [built]
+     import() ./module-a [0] ./e1.js 1:0-47
+     import() ./module-a [3] ./module-c.js 1:0-47
+chunk    {3} c.js (c) 49 bytes <{1}> <{4}> >{2}< [rendered]
+ [3] ./module-c.js 49 bytes {3} [built]
+     import() ./module-c [1] ./e2.js 1:0-47
+     import() ./module-c [4] ./module-b.js 1:0-47
+chunk    {4} b.js (b) 49 bytes <{2}> >{3}< [rendered]
+ [4] ./module-b.js 49 bytes {4} [built]
+     import() ./module-b [2] ./module-a.js 1:0-47"
+`;
+
 exports[`StatsTestCases should print correct stats for graph-correctness-modules 1`] = `
 "Entrypoint e1 = e1.js
 Entrypoint e2 = e2.js
